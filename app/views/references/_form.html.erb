@@ -1,0 +1,22 @@
+<% form_for @reference,:html => { :multipart => true } do |f| %>
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+<div>
+  <%= f.label :author %>
+  <%= User.find(session[:user_id]).name %>
+  <%= f.hidden_field :author, :value => User.find(session[:user_id]).name %>
+</div>
+<div>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+</div>
+<div>
+  <%= f.label :data %>
+  <%= f.file_field :data %>
+</div>
+<div>
+  <%= f.submit %>
+</div>
+<% end %>

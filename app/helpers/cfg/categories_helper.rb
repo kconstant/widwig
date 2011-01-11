@@ -1,0 +1,3 @@
+module Cfg::CategoriesHelper
+  
+end

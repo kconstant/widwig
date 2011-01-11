@@ -1,0 +1,27 @@
+<h1>Tasks</h1>
+<table>
+  <tr>
+    <th>시작날짜</th>
+    <th>종료날짜</th>
+    <th>작업명</th>
+    <th>담당자</th>
+    <th></th>
+  </tr>
+  <% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.start_at %></td>
+    <td><%= task.end_at %></td>
+    <td><%= task.name %></td>
+    <td>
+      <% task.users.each do |user| %>
+        <%= user.name %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to "Edit", edit_task_path(task) %>
+      <%= link_to "Delete", task_path(task), :method => :delete, :confirm => "Are you sure?" %>
+    </td>
+  </tr>
+  <% end %> 
+</table>
+<%= link_to "New", new_task_path %>

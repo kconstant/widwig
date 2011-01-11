@@ -1,0 +1,11 @@
+<p>
+  Title:</br>
+  <%= @post.title %>
+</p>
+<p>
+  Category:<%= @post.category.name%>
+  Author:<%= @post.author %>
+</p>
+<%=raw @post.content %>
+<%= link_to "Edit", edit_post_path %>
+<%= link_to "Delete", post_path, :confirm => 'Are you sure?', :method => :delete %>

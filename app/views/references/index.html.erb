@@ -1,0 +1,25 @@
+<h1>자료실</h1>
+<table>
+  <tr>
+    <th>자료명</th>
+    <th>작성자</th>
+    <th>설 명</th>
+    <th>자 료</th>
+    <th></th>
+  </tr>
+  <% @references.each do |reference| %>
+  <tr>
+    <td><%= reference.name %></td>
+    <td><%= reference.author %></td>
+    <td><%= reference.description %></td>
+    <td>
+      <%= link_to reference.data_file_name, reference.data.url(:original, false) %>
+    </td>
+    <td>
+      <%= link_to "Edit", edit_reference_path(reference) %>
+      <%= link_to "Delete", reference_path(reference), :method => :delete, :confirm => "Are you sure?" %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "New", new_reference_path %>

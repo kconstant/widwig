@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Widwig</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :ckeditor %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div>
+  ------포스트-----<br />
+  <%= link_to "회의록", agenda_posts_path %><br />
+  <%= link_to "업무보고", report_posts_path %><br />
+  <%= link_to "아이디어&진행상황", brainstorm_posts_path %><br />
+  ----자유게시판----<br />
+  <%= link_to "자유게시판", free_posts_path %><br />
+  ------할일들-----<br />
+  <%= link_to "할일들", tasks_path %><br />
+  <%= link_to "캘린더", calendar_path %><br />
+  ------자료실----<br />
+  <%= link_to "자료실", references_path %><br />
+  <% if User.find(session[:user_id]).name == "admin" %>
+  ------관리및설정----<br />
+  <%= link_to "카테고리설정", cfg_categories_path %><br />
+  <%= link_to "사용자설정", cfg_users_path %><br />
+  <% end %>
+</div>
+<div >
+     환영합니다  <%= User.find(session[:user_id]).name%> 님!
+  <%= link_to "Log out", logout_authenticate_index_path%>
+</div>
+<div id="main">
+  <% if flash[:notice] %>
+    <div id="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+    <%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<% form_for([:cfg, @category]) do |f| %>
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+<div>
+  <%= f.label :parent_id %>
+  <%= f.select(:parent_id, @parents.collect{|c| [ c.name, c.id]}, {:prompt => :true})%>  
+</div>
+<div>
+  <%= f.label :exposure %>
+  <%= f.check_box(:exposure, {}, true, false )%>
+</div>
+<div>
+  <%= f.submit %>
+</div>
+<% end %>

@@ -1,0 +1,23 @@
+<% form_for(@task) do |f| %>
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+<div>
+  <%= f.label :start_at %>
+  <%= f.date_select :start_at %>
+</div>
+<div>
+  <%= f.label :end_at %>
+  <%= f.date_select :end_at%>
+</div>
+<div>
+  <% User.where("name !=?", "admin" ).each do |user|%>
+    <%= check_box_tag "task[user_ids][]", user.id, @task.users.include?(user) %>
+    <%= user.name %>
+  <% end %>
+</div>
+<div>
+  <%= f.submit %>
+</div>
+<% end %>
